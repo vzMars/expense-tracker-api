@@ -28,4 +28,10 @@ public class GlobalExceptionHandler {
         ErrorMsgResponse error = new ErrorMsgResponse("Incorrect username or password.");
         return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
     }
+
+    @ExceptionHandler(CategoryTypeException.class)
+    public ResponseEntity<ErrorMsgResponse> categoryTypeErrors(CategoryTypeException ex) {
+        ErrorMsgResponse error = new ErrorMsgResponse(ex.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
 }
