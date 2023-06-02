@@ -1,10 +1,10 @@
 package dev.marcosgonzalez.expensetracker.exception;
 
-public class DuplicateUserException extends RuntimeException {
+public class DuplicateException extends RuntimeException {
 
     private static final long serialVersionUID = 1;
 
-    public DuplicateUserException(String message) {
+    public DuplicateException(String message) {
         super(message);
     }
 }

@@ -4,7 +4,7 @@ import dev.marcosgonzalez.expensetracker.dto.AuthResponse;
 import dev.marcosgonzalez.expensetracker.dto.LoginBody;
 import dev.marcosgonzalez.expensetracker.dto.SignupBody;
 import dev.marcosgonzalez.expensetracker.dto.UserInfo;
-import dev.marcosgonzalez.expensetracker.exception.DuplicateUserException;
+import dev.marcosgonzalez.expensetracker.exception.DuplicateException;
 import dev.marcosgonzalez.expensetracker.model.User;
 import dev.marcosgonzalez.expensetracker.repository.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
@@ -65,7 +65,7 @@ public class AuthService {
 
     public AuthResponse signup(SignupBody body, HttpServletRequest req, HttpServletResponse res) {
         if (userRepository.existsByUsernameIgnoreCaseOrEmailIgnoreCase(body.getUsername(), body.getEmail())) {
-            throw new DuplicateUserException("The username or email has already been taken.");
+            throw new DuplicateException("The username or email has already been taken.");
         }
 
         User user = new User(body.getUsername(), body.getEmail(), passwordEncoder.encode(body.getPassword()));

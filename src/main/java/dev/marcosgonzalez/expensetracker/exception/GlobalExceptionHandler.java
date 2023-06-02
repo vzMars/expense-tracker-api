@@ -17,8 +17,8 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(DuplicateUserException.class)
-    public ResponseEntity<ErrorMsgResponse> duplicateUserErrors(DuplicateUserException ex) {
+    @ExceptionHandler(DuplicateException.class)
+    public ResponseEntity<ErrorMsgResponse> duplicateErrors(DuplicateException ex) {
         ErrorMsgResponse error = new ErrorMsgResponse(ex.getMessage());
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
