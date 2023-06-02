@@ -6,6 +6,8 @@ import dev.marcosgonzalez.expensetracker.model.Category;
 import dev.marcosgonzalez.expensetracker.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CategoryService {
 
@@ -13,6 +15,10 @@ public class CategoryService {
 
     public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
+    }
+
+    public Iterable<Category> getCategories() {
+        return categoryRepository.findAll();
     }
 
     public Category createCategory(CreateCategoryBody body) {
