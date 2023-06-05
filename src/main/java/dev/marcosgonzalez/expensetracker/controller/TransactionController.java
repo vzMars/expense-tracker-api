@@ -1,8 +1,7 @@
 package dev.marcosgonzalez.expensetracker.controller;
 
-import dev.marcosgonzalez.expensetracker.dto.CreateTransactionBody;
+import dev.marcosgonzalez.expensetracker.dto.TransactionBody;
 import dev.marcosgonzalez.expensetracker.dto.TransactionInfo;
-import dev.marcosgonzalez.expensetracker.model.User;
 import dev.marcosgonzalez.expensetracker.service.TransactionService;
 import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
@@ -26,7 +25,12 @@ public class TransactionController {
     }
 
     @PostMapping
-    public TransactionInfo createTransaction(@RequestBody @Valid CreateTransactionBody body, Authentication authentication) {
+    public TransactionInfo createTransaction(@RequestBody @Valid TransactionBody body, Authentication authentication) {
         return transactionService.createTransaction(body, authentication);
+    }
+
+    @PutMapping("/{id}")
+    public TransactionInfo updateTransaction(@PathVariable Integer id, @RequestBody @Valid TransactionBody body, Authentication authentication) {
+        return transactionService.updateTransaction(id, body, authentication);
     }
 }
