@@ -1,12 +1,12 @@
 package dev.marcosgonzalez.expensetracker.controller;
 
+import dev.marcosgonzalez.expensetracker.dto.CreateTransactionBody;
 import dev.marcosgonzalez.expensetracker.dto.TransactionInfo;
 import dev.marcosgonzalez.expensetracker.model.User;
 import dev.marcosgonzalez.expensetracker.service.TransactionService;
+import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +22,11 @@ public class TransactionController {
 
     @GetMapping
     public List<TransactionInfo> getTransactions(Authentication authentication) {
-        User user = (User) authentication.getPrincipal();
-        return transactionService.getTransactions(user.getId());
+        return transactionService.getTransactions(authentication);
+    }
+
+    @PostMapping
+    public TransactionInfo createTransaction(@RequestBody @Valid CreateTransactionBody body, Authentication authentication) {
+        return transactionService.createTransaction(body, authentication);
     }
 }
