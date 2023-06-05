@@ -2,7 +2,7 @@ package dev.marcosgonzalez.expensetracker.model;
 
 import jakarta.persistence.*;
 
-@Entity(name = "category")
+@Entity(name = "categories")
 public class Category {
 
     @Id
