@@ -4,7 +4,7 @@ The back-end for a full-stack expense tracker application that allows users to k
 
 **Link to project:** https://expensetracker.vzmars.com
 
-**Front-End:** https://github.com/vzMars/employee-tracker
+**Front-End:** https://github.com/vzMars/expense-tracker
 
 [//]: # (![alt text]&#40;https://i.imgur.com/dRCkzJk.png&#41;)
 
