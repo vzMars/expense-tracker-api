@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.Range;
 
 import java.time.LocalDate;
 
-public class CreateTransactionBody {
+public class TransactionBody {
 
     @NotBlank(message = "Please complete all required fields.")
     private String title;
@@ -25,7 +25,7 @@ public class CreateTransactionBody {
     @Range(min = 1)
     private Integer categoryId;
 
-    public CreateTransactionBody(String title, Integer amount, LocalDate transactionDate, String description, Integer categoryId) {
+    public TransactionBody(String title, Integer amount, LocalDate transactionDate, String description, Integer categoryId) {
         this.title = title;
         this.amount = amount;
         this.transactionDate = transactionDate;
