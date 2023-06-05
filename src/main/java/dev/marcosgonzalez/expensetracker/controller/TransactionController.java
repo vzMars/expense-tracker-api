@@ -33,4 +33,9 @@ public class TransactionController {
     public TransactionInfo updateTransaction(@PathVariable Integer id, @RequestBody @Valid TransactionBody body, Authentication authentication) {
         return transactionService.updateTransaction(id, body, authentication);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteTransaction(@PathVariable Integer id, Authentication authentication) {
+        transactionService.deleteTransaction(id, authentication);
+    }
 }

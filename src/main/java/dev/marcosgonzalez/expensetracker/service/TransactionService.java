@@ -76,4 +76,16 @@ public class TransactionService {
                 savedTransaction.getTransactionDate(), savedTransaction.getDescription(), savedTransaction.getUser().getId(),
                 savedTransaction.getCategory().getId(), savedTransaction.getCategory().getName(), savedTransaction.getCategory().getType());
     }
+
+    public void deleteTransaction(Integer id, Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
+
+        Optional<Transaction> transaction = transactionRepository.findById(id);
+
+        if (transaction.isEmpty() || !transaction.get().getUser().getId().equals(user.getId())) {
+            throw new NotFoundException("Transaction not found.");
+        }
+
+        transactionRepository.delete(transaction.get());
+    }
 }
