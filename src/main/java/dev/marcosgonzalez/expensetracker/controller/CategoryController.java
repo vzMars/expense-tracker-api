@@ -2,7 +2,6 @@ package dev.marcosgonzalez.expensetracker.controller;
 
 import dev.marcosgonzalez.expensetracker.dto.CreateCategoryBody;
 import dev.marcosgonzalez.expensetracker.model.Category;
-import dev.marcosgonzalez.expensetracker.model.CategoryType;
 import dev.marcosgonzalez.expensetracker.service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
